@@ -1,0 +1,14 @@
+{
+  "name": "docker-course",
+  "version": "1.0.0",
+  "description": "* `docker build -t [TAGNAME] [DOCKERFILE_LOCATION]`\r * `docker images`\r * `docker rmi [IMAGE_ID/NAME]`\r * `docker ps -a`\r * `docker rm [CONTAINER_ID/NAME]`\r * `docker run [username/app[:tag]]`\r     * `-d` - detached (default-attached)\r     * `-i` - input enabled\r     * `-t` - terminal\r * `docker attach [DETACHED_CONTAINER_ID/NAME]`",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
