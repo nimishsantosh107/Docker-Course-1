@@ -1,0 +1,44 @@
+version: "3.3"
+services: 
+    
+    db:
+        image: mysql
+        container_name: mysql
+        hostname: mysql
+        ports:
+            - "3306:3306"
+        networks: 
+            - private_network
+        environment:
+            MYSQL_ROOT_PASSWORD: "root"
+            MYSQL_ROOT_HOST: "%"
+            MYSQL_DATABASE: "example"
+        volumes:
+            - mysql_data_volume:/var/lib/mysql
+
+    app:
+        image: docker-course
+        container_name: app
+        hostname: app
+        ports:
+            - "3000:3000"
+        networks:
+            - private_network
+        environment: 
+            WAIT_HOSTS: mysql:3306
+            WAIT_TIMEOUT: 600
+            WAIT_HOST_CONNECT_TIMEOUT: 15
+            WAIT_SLEEP_INTERVAL: 10
+            WAIT_LOGGER_LEVEL: "debug"
+        depends_on:
+            - db
+
+networks:
+    private_network:
+        external: true
+        name: private
+        
+volumes:
+    mysql_data_volume:
+        external: true
+        name: mysql_data

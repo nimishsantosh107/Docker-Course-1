@@ -17,6 +17,7 @@
     * `-i` - input enabled
     * `-t` - terminal
     * `-e ENV_VAR env_val`
+    * `-h [HOSTNAME]`
     * `-p [HOSTPORT:CONTAINERPORT]`
     * `-v [EXTERNALDIR:INTERNALDIR]`
     * `--name [CONTAINERNAME]`
@@ -31,3 +32,7 @@
 
 * `/var/lib/docker/` maps to `\\wsl$\docker-desktop-data\version-pack-data\community\docker\`
 * `docker run -v /:/data -it linux /bin/sh` - use this to explore host system
+
+## Example commands:
+* `docker run --rm --network private -e WAIT_HOSTS="mysqlhost:3306" -e WAIT_TIMEOUT=600  -e WAIT_HOST_CONNECT_TIMEOUT=10 docker-course`
+* `docker run --rm --network private --name mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_ROOT_HOST=% -p 3306:3306 -h mysqlhost -v mysql_data:/var/lib/mysql -d mysql`
