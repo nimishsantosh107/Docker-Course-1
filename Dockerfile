@@ -14,4 +14,4 @@ COPY . ./
 # Expose port for intercontainer comms (non functional)
 EXPOSE 3000
 # Run server
-CMD sh -c "/wait && node ./app.js"
+CMD sh -c "/wait && node ./server/index.js"
